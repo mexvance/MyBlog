@@ -1,8 +1,15 @@
 ﻿@model MyBlog.Models.BlogPost
-
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService Authorization
+@{
+    var canEdit = (await Authorization.AuthorizeAsync(User, MyIdentityData.BlogPolicy_Edit)).Succeeded;
+}
 @{
     ViewData["Title"] = "Edit";
 }
+
+@if (canEdit)
+{
 
 <h1>Edit</h1>
 
@@ -38,6 +45,7 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+}
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
