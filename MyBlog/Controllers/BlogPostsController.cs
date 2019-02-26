@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -54,6 +55,7 @@ namespace MyBlog.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = MyIdentityData.BlogPolicy_Add)]
         public async Task<IActionResult> Create([Bind("Id,Title,Body,Posted")] BlogPost blogPost)
         {
             if (ModelState.IsValid)
@@ -86,6 +88,7 @@ namespace MyBlog.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = MyIdentityData.BlogPolicy_Edit)]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Body,Posted")] BlogPost blogPost)
         {
             if (id != blogPost.Id)
@@ -137,6 +140,7 @@ namespace MyBlog.Controllers
         // POST: BlogPosts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = MyIdentityData.BlogPolicy_Delete)]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var blogPost = await _context.BlogPosts.FindAsync(id);
