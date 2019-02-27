@@ -76,5 +76,31 @@ tr {
     border-radius: 5px;
     padding-top: 8px;
     padding-bottom: 5px;
+    align-content: center;
+    margin-left: 15%;
+    margin-right: 15%;
 }
+#backList {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+#edit {
+    margin-left: 15%;
+    color: white;
+}
+    #edit:hover {
+        color: deepskyblue;
+    }
+#backList{
+    color: white;
+}
+    #backList:hover {
+        color: deepskyblue;
+    }
+#newColor {
+    color: white;
+}
+#newColor:hover {
+        color: deepskyblue;
+    }
 

@@ -37,6 +37,6 @@
 <div>
     @if (canEdit)
     {
-        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>}|
-    <a asp-action="Index">Back to List</a>
+        <a id="edit" asp-action="Edit" asp-route-id="@Model.Id">Edit </a>}|
+    <a id="newColor" asp-action="Index">Back to List</a>
 </div>
