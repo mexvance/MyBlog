@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using MyBlog.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
 namespace MyBlog
 {
@@ -49,7 +50,14 @@ namespace MyBlog
                 options.AddPolicy(MyIdentityData.BlogPolicy_Delete, policy => policy.RequireRole(MyIdentityData.AdminRoleName));
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddRazorPagesOptions(options =>
+                {
+                    options.Conventions.Add(
+                        new PageRouteTransformerConvention(
+                            new Slugify()));
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -82,7 +90,7 @@ namespace MyBlog
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller}/{action}/{id?}",
+                    template: "{controller}/{action}/{Id?}",
                     defaults: new
                     {
                         controller = "Home",
