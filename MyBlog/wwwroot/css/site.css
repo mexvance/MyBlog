@@ -6,6 +6,9 @@ a.navbar-brand {
   text-align: center;
   word-break: break-all;
 }
+navbar-brand hover {
+    background-color: mediumslateblue;
+}
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -44,7 +47,8 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
-    background-image: "..\cool-background.png";
+    background-image: url("../mountains.jpg");
+    background-size:cover;
 }
 .footer {
   position: absolute;
