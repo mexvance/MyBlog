@@ -14,6 +14,21 @@ namespace MyBlog.Data
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<PostTag>()
+                .HasKey(pt => new { pt.TagId, pt.PostId });
+            modelBuilder.Entity<PostTag>()
+                .HasOne(pt => pt.Tag)
+                .WithMany(p => p.PostTags)
+                .HasForeignKey(pt => pt.TagId);
+            modelBuilder.Entity<PostTag>()
+                .HasOne(pt => pt.BlogPost)
+                .WithMany(t => t.PostTags)
+                .HasForeignKey(pt => pt.PostId);
+        }
+
         public DbSet<BlogPost> BlogPosts { get; set; }      //creates a table of blog posts
 
     }

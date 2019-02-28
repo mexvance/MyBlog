@@ -14,6 +14,10 @@ namespace MyBlog.Models
         public string Title { get; set; }
         public string Body { get; set; }
         public DateTime Posted { get; set; }
+        public IList<PostTag> PostTags { get; set; }
+
+
+
         [NotMapped]
         public string miniBody
         {
