@@ -79,6 +79,7 @@ tr {
     align-content: center;
     margin-left: 15%;
     margin-right: 15%;
+    text-wrap: normal;
 }
 #backList {
     margin-left: 15%;
@@ -86,7 +87,7 @@ tr {
 }
 #edit {
     margin-left: 15%;
-    color: white;
+    color: black;
 }
     #edit:hover {
         color: deepskyblue;
@@ -98,9 +99,30 @@ tr {
         color: deepskyblue;
     }
 #newColor {
-    color: white;
+    color: black;
 }
 #newColor:hover {
         color: deepskyblue;
     }
+.row.col-sm-10 {
+    text-wrap:normal;
+}
+.nav-Buttons a {
+    background-color: white;
+    border-radius: 5px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-right: 7px;
+    padding-left: 7px;
+    margin: 0px 2px 0px 2px;
+}
+
+.editButton:hover {
+    background-color:aqua;
+}
+
+.col-md-4 {
+    display: block;
+    width: 90%;
+}
 

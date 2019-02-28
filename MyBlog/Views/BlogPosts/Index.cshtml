@@ -13,7 +13,7 @@
 <h1 id="LOB">List of Blogs</h1>
 @if (canAdd)
 { 
-    <p>
+    <p class="nav-Buttons">
         <a id="CreateNew" asp-action="Create">Create New</a>
     </p>
 }
@@ -46,9 +46,11 @@
                     @Html.DisplayFor(modelItem => item.Posted)
                 </td>
                 <td>
-                    @if (canEdit){<a class = "editButton" asp-action="Edit" asp-route-id="@item.Id">Edit</a><span>|</span>}
+                    <div class="nav-Buttons">
+                    @if (canEdit){<a class = "editButton" asp-action="Edit" asp-route-id="@item.Id">Edit</a>}
                                   <a class = "editButton" asp-action="Details" asp-route-slug="@item.Slug">Details</a>
-                    @if (canDelete){<span>|</span><a class = "editButton" asp-action="Delete" asp-route-id="@item.Id">Delete</a>}
+                    @if (canDelete){<a class = "editButton" asp-action="Delete" asp-route-id="@item.Id">Delete</a>}
+                    </div>
                 </td>
             </tr>
         }
